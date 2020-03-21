@@ -1,8 +1,4 @@
-/*
-queue()
-    .defer(d3.json, './static/pobreza-lat-lng-2015.json')
-    .await(makeGraphs);
-*/
+// Declaración de variables globales.
 allDim = null;
 entidadDim = null;
 municipioDim = null;
@@ -14,7 +10,7 @@ poblacionPobrezaDisplay = null;
 ndx = null;
 
 function makeGraphs(recordsJson) {
-    // Crea una instancia del crossfilter
+    // Crea una instancia del crossfilter.
     ndx = crossfilter(recordsJson);
 
     // Define las dimensiones
@@ -28,14 +24,17 @@ function makeGraphs(recordsJson) {
         return d.municipio;
     });
 
+    // Declaración de tipos de gráficas y cuadro de despliegue.
     entidadChart = dc.rowChart("#entidad-chart");
     municipioChart = dc.rowChart("#municipio-chart");
     poblacionPobrezaDisplay = dc.numberDisplay("#poblacion-pobreza");
 
+    // Gráfica desplegada por default.
     graficasPorDimension(ndx, 'pobreza_pob');
     graficaMapa();
 };
 
+// Función que establece la característica de pobreza que se quiere visualizar.
 function cambiaDimension(tipoPobreza) {
     graficasPorDimension(ndx, tipoPobreza);
 }
