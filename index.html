@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./static/lib/css//bootstrap.min.css">
+    <link rel="stylesheet" href="./static/lib/css/keen-dashboards.css">
+    <link rel="stylesheet" href="./static/lib/css/dc.min.css">
+    <link rel="stylesheet" href="./static/lib/css/leaflet.css">
+    <link rel="stylesheet" href="./static/css/custom.css">
+</head>
+
+<body class="application">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="./">Visualización Interactiva de Indicadores de Pobreza - México</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" onclick="cambiaDimension('pobreza_pob')" class="btn btn-primary btn-sm btn-space">Situación de Pobreza</button>
+                    <button type="button" onclick="cambiaDimension('pobreza_e_pob')" class="btn btn-primary btn-sm btn-space">Situación de Pobreza Extrema</button>
+                    <button type="button" onclick="cambiaDimension('pobreza_m_pob')" class="btn btn-primary btn-sm btn-space">Pobreza Moderada</button>
+                    <button type="button" onclick="cambiaDimension('vul_car_pob')" class="btn btn-primary btn-sm btn-space">Vulnerables por Carencias</button>
+                    <button type="button" onclick="cambiaDimension('vul_ing_pob')" class="btn btn-primary btn-sm btn-space">Vulnerables por Ingreso</button>
+                    <button type="button" onclick="cambiaDimension('npnv_pob')" class="btn btn-primary btn-sm btn-space">No Pobres y No Vulnerables</button>
+
+                    <button type="button" onclick="cambiaDimension('ic_rezedu_pob')" class="btn btn-primary btn-sm btn-space">Con Rezago Educativo</button>
+                    <button type="button" onclick="cambiaDimension('ic_asalud_pob')" class="btn btn-primary btn-sm btn-space">Con Carencia por Acceso a Servicios de Salud</button>
+                    <button type="button" onclick="cambiaDimension('ic_segsoc_pob')" class="btn btn-primary btn-sm btn-space">Con Carencia por Acceso a la Seguridad Social</button>
+                    <button type="button" onclick="cambiaDimension('ic_cv_pob')" class="btn btn-primary btn-sm btn-space">Con Carencia por Calidad y Espacios en la Vivienda</button>
+
+                    <button type="button" onclick="cambiaDimension('ic_sbv_pob')" class="btn btn-primary btn-sm btn-space">Con Carencia por Acceso a los Servicios Básicos en la Vivienda</button>
+                    <button type="button" onclick="cambiaDimension('ic_ali_pob')" class="btn btn-primary btn-sm btn-space">Con Carencia por Acceso a la Alimentación</button>
+                    <button type="button" onclick="cambiaDimension('carencias_pob')" class="btn btn-primary btn-sm btn-space">Con al menos una Carencia Social</button>
+
+                    <button type="button" onclick="cambiaDimension('carencias3_pob')" class="btn btn-primary btn-sm btn-space">Con al menos tres Carencias Sociales</button>
+                    <button type="button" onclick="cambiaDimension('plb_pob')" class="btn btn-primary btn-sm btn-space">Con Ingreso inferior a la Línea de Bienestar</button>
+                    <button type="button" onclick="cambiaDimension('plbm_pob')" class="btn btn-primary btn-sm btn-space">Con ingreso inferior a la Línea de Bienestar mínimo</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="row">
+
+                <!-- Estado -->
+                <div class="col-sm-12">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Estado
+                            <div class="pull-right">
+                                <a class="reset" href="javascript:entidadChart.filterAll();dc.redrawAll();">Restablecer Selección</a>
+                            </div>
+                        </div>
+                        <div class="chart-stage">
+                            <div id="entidad-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Estado -->
+
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="row">
+
+                <!-- Municipio -->
+                <div class="col-sm-12">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Municipio
+                            <div class="pull-right">
+                                <a class="reset" href="javascript:municipioChart.filterAll();dc.redrawAll();">Restablecer Selección</a>
+                            </div>
+                        </div>
+                        <div class="chart-stage">
+                            <div id="municipio-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Municipio -->
+
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="row">
+                <!-- Mapa -->
+                <div class="col-sm-12">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Mapa
+                        </div>
+                        <div class="chart-stage">
+                            <div id="map" style="width: 600px; height: 500px"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mapa -->
+            </div>
+
+            <div class="row">
+                <!-- Población -->
+                <div class="col-sm-12">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Población Total
+                        </div>
+                        <div class="chart-stage">
+                            <div id="poblacion-pobreza"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Población -->
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<hr>
+
+<script src="./static/lib/js/jquery.min.js"></script>
+<script src="./static/lib/js/bootstrap.min.js"></script>
+<script src="./static/lib/js/underscore-min.js"></script>
+<script src="./static/lib/js/crossfilter.js"></script>
+<script src="./static/lib/js/d3.min.js"></script>
+<script src="./static/lib/js/dc.min.js"></script>
+<script src="./static/lib/js/queue.js"></script>
+<script src="./static/lib/js/leaflet.js"></script>
+<script src="./static/lib/js/leaflet-heat.js"></script>
+<script src="./static/lib/js/keen.min.js"></script>
+
+<!--Código desarrollado-->
+<script type="text/javascript" src="./static/pobreza-lat-lng-2015.json"></script>
+<script src='./static/js/graphs.js' type='text/javascript'></script>
+
+</body>
+</html>
