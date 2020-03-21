@@ -13,8 +13,8 @@ Abrir el archivo **index.html** en cualquier navegador.
 El archivo **index.html** requiere del contenido de la carpeta **static**.
 
 ## Archivos importantes
-- poverty_data_generator.py:
+- **poverty_data_generator.py**:
 Código Python que convierte los datos de un archivo CSV a JSON.
-- index.html: Código HTML en donde se incrustan las gráficas haciendo referencias mediante ID's
-- static/js/graphs.js: Archivo JavaScript que contiene la construcción de las gráficas y la lógica de manipulación de
+- **index.html**: Código HTML en donde se incrustan las gráficas haciendo referencias mediante ID's
+- static/js/**graphs.js**: Archivo JavaScript que contiene la construcción de las gráficas y la lógica de manipulación de
 datos usando d3.js y dc.js. 
