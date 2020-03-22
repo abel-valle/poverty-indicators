@@ -3,9 +3,10 @@ Proyecto de contenido web para visualización de datos de pobreza de México del
 El proyecto se desarrolló usando lo siguiente:
 
 - **JavaScript**: Lenguaje de programación interpretado.
-- **d3.js**: JavaScript library for visualizing data with HTML, SVG, and CSS.
-- **dc.js**: JavaScript charting library with native crossfilter support, allowing highly efficient exploration on large multi-dimensional datasets.
-- **Crossfilter**: Fast Multidimensional Filtering for Coordinated Views.
+- **d3.js**: Biblioteca JavaScript para visualizar datos con HTML, SVG y CSS.
+- **dc.js**: Biblioteca de gráficas JavaScript con soporte nativo de crossfilter,
+permitiendo una exploración altamente eficiente en datasets grandes y multi-dimensionales.
+- **Crossfilter**: Filtros multidimensionales rápidos para vistas coordenadas (Fast Multidimensional Filtering for Coordinated Views).
 - **HTML 5**
 - **Bootstrap 3**
 ## Ejecución
